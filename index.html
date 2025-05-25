@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; min-height: 15.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">    &lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1">    &lt;title&gt;Improv Jam Spark Generator&lt;/title&gt;</p>
+<p class="p1">    &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1">    &lt;style&gt;</p>
+<p class="p1">        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap');</p>
+<p class="p1">        body {</p>
+<p class="p1">            font-family: 'Inter', sans-serif;</p>
+<p class="p1">            background-color: #1a202c; /* Tailwind gray-900 */</p>
+<p class="p1">            color: #e2e8f0; /* Tailwind coolGray-200 */</p>
+<p class="p1">            display: flex;</p>
+<p class="p1">            flex-direction: column;</p>
+<p class="p1">            justify-content: center;</p>
+<p class="p1">            align-items: center;</p>
+<p class="p1">            min-height: 100vh;</p>
+<p class="p1">            padding: 1rem;</p>
+<p class="p1">            text-align: center;</p>
+<p class="p1">        }</p>
+<p class="p1">        .card {</p>
+<p class="p1">            background-color: #2d3748; /* Tailwind gray-800 */</p>
+<p class="p1">            padding: 1.5rem 2rem; /* p-6 md:p-8 */</p>
+<p class="p1">            border-radius: 0.75rem; /* rounded-xl */</p>
+<p class="p1">            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);</p>
+<p class="p1">            margin-bottom: 1rem; /* mb-4 */</p>
+<p class="p1">            width: 100%;</p>
+<p class="p1">            max-width: 320px; </p>
+<p class="p1">        }</p>
+<p class="p1">        .card h2 {</p>
+<p class="p1">            color: #63b3ed; /* Tailwind blue-400 */</p>
+<p class="p1">            font-size: 1.125rem; /* text-lg */</p>
+<p class="p1">            font-weight: 600; /* font-semibold */</p>
+<p class="p1">            margin-bottom: 0.5rem; /* mb-2 */</p>
+<p class="p1">        }</p>
+<p class="p1">        .card p {</p>
+<p class="p1">            color: #cbd5e0; /* Tailwind coolGray-300 */</p>
+<p class="p1">            font-size: 1.25rem; /* text-xl, slightly reduced for potentially longer feel descriptions */</p>
+<p class="p1">            font-weight: 700; /* font-bold */</p>
+<p class="p1">            min-height: 4.5rem; /* Ensures space for text, adjusted for potentially longer feels */</p>
+<p class="p1">            display: flex;</p>
+<p class="p1">            align-items: center;</p>
+<p class="p1">            justify-content: center;</p>
+<p class="p1">            line-height: 1.4; /* Added for better readability of multi-line feels */</p>
+<p class="p1">        }</p>
+<p class="p1">        .button {</p>
+<p class="p1">            background-color: #4299e1; /* Tailwind blue-500 */</p>
+<p class="p1">            color: white;</p>
+<p class="p1">            font-weight: 600; /* font-semibold */</p>
+<p class="p1">            padding: 0.75rem 1.5rem; /* py-3 px-6 */</p>
+<p class="p1">            border-radius: 0.5rem; /* rounded-lg */</p>
+<p class="p1">            transition: background-color 0.2s ease-in-out;</p>
+<p class="p1">            cursor: pointer;</p>
+<p class="p1">            border: none;</p>
+<p class="p1">            font-size: 1.125rem; /* text-lg */</p>
+<p class="p1">        }</p>
+<p class="p1">        .button:hover {</p>
+<p class="p1">            background-color: #3182ce; /* Tailwind blue-600 */</p>
+<p class="p1">        }</p>
+<p class="p1">        .button:active {</p>
+<p class="p1">            transform: scale(0.98);</p>
+<p class="p1">        }</p>
+<p class="p1">        .spinner {</p>
+<p class="p1">            display: inline-block;</p>
+<p class="p1">            width: 20px;</p>
+<p class="p1">            height: 20px;</p>
+<p class="p1">            border: 3px solid rgba(255,255,255,.3);</p>
+<p class="p1">            border-radius: 50%;</p>
+<p class="p1">            border-top-color: #fff;</p>
+<p class="p1">            animation: spin 1s ease-in-out infinite;</p>
+<p class="p1">            margin-left: 8px;</p>
+<p class="p1">        }</p>
+<p class="p1">        @keyframes spin {</p>
+<p class="p1">            to { transform: rotate(360deg); }</p>
+<p class="p1">        }</p>
+<p class="p1">        .hidden {</p>
+<p class="p1">            display: none;</p>
+<p class="p1">        }</p>
+<p class="p1">    &lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1">    &lt;div class="w-full max-w-5xl mx-auto"&gt;</p>
+<p class="p1">        &lt;header class="mb-8"&gt;</p>
+<p class="p1">            &lt;h1 class="text-4xl md:text-5xl font-bold text-blue-400"&gt;Improv Jam Spark Generator&lt;/h1&gt;</p>
+<p class="p1">            &lt;p class="text-lg text-gray-400 mt-2"&gt;Get random ideas to kickstart your jam session!&lt;/p&gt;</p>
+<p class="p1">        &lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">        &lt;div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-8"&gt;</p>
+<p class="p1">            &lt;div class="card"&gt;</p>
+<p class="p1">                &lt;h2&gt;Musical Key&lt;/h2&gt;</p>
+<p class="p1">                &lt;p id="jamKey"&gt;-&lt;/p&gt;</p>
+<p class="p1">            &lt;/div&gt;</p>
+<p class="p1">            &lt;div class="card"&gt;</p>
+<p class="p1">                &lt;h2&gt;Feel / Groove&lt;/h2&gt;</p>
+<p class="p1">                &lt;p id="jamFeel"&gt;-&lt;/p&gt;</p>
+<p class="p1">            &lt;/div&gt;</p>
+<p class="p1">            &lt;div class="card"&gt;</p>
+<p class="p1">                &lt;h2&gt;Vibe Adjective&lt;/h2&gt;</p>
+<p class="p1">                &lt;p id="jamAdjective"&gt;-&lt;/p&gt;</p>
+<p class="p1">            &lt;/div&gt;</p>
+<p class="p1">            &lt;div class="card"&gt;</p>
+<p class="p1">                &lt;h2&gt;Keyboard Sound&lt;/h2&gt;</p>
+<p class="p1">                &lt;p id="keyboardSound"&gt;-&lt;/p&gt;</p>
+<p class="p1">            &lt;/div&gt;</p>
+<p class="p1">            &lt;div class="card"&gt;</p>
+<p class="p1">                &lt;h2&gt;Who Starts?&lt;/h2&gt;</p>
+<p class="p1">                &lt;p id="jamStarter"&gt;</p>
+<p class="p1">                    &lt;span&gt;-&lt;/span&gt;</p>
+<p class="p1">                    &lt;span id="spinnerIcon" class="spinner hidden"&gt;&lt;/span&gt;</p>
+<p class="p1">                &lt;/p&gt;</p>
+<p class="p1">            &lt;/div&gt;</p>
+<p class="p1">        &lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">        &lt;button id="generateButton" class="button"&gt;</p>
+<p class="p1">            ✨ Spark New Jam!</p>
+<p class="p1">        &lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">        &lt;footer class="mt-12 text-gray-500 text-sm"&gt;</p>
+<p class="p1">            &lt;p&gt;Tip: Interpret Roman numerals in "Feel/Groove" based on the selected "Musical Key". Have fun grooving!&lt;/p&gt;</p>
+<p class="p1">        &lt;/footer&gt;</p>
+<p class="p1">    &lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">    &lt;script&gt;</p>
+<p class="p1">        document.addEventListener('DOMContentLoaded', () =&gt; {</p>
+<p class="p1">            const musicalKeys = [</p>
+<p class="p1">                "C Major", "F Major", "Bb Major", "Eb Major", "Ab Major", "Db Major", "Gb Major",</p>
+<p class="p1">                "G Major", "D Major", "A Major", "E Major", "B Major",</p>
+<p class="p1">                "A Minor", "D Minor", "G Minor", "C Minor", "F Minor", "Bb Minor", "Eb Minor",</p>
+<p class="p1">                "E Minor", "B Minor", "F# Minor", "C# Minor", "G# Minor"</p>
+<p class="p1">            ];</p>
+<p class="p2"><br></p>
+<p class="p1">            const majorKeyFeels = [</p>
+<p class="p1">                "Bright I-IV vamp, bridge to vi or a ii-V progression.",</p>
+<p class="p1">                "Grooving I-V vamp, bridge in a related minor (e.g., vi or iii).",</p>
+<p class="p1">                "Soulful I-IV-V progression, focus on melodic development.",</p>
+<p class="p1">                "Smooth Imaj7-ii7 vamp, bridge could modulate up a whole step.",</p>
+<p class="p1">                "Driving I-bVII-IV-I rock/pop progression.",</p>
+<p class="p1">                "Slow Jam I-IV, bridge features a V7#9 resolving to I.",</p>
+<p class="p1">                "Uptempo Swing, solos over ii-V-I changes and I-vi-ii-V turnarounds.",</p>
+<p class="p1">                "Latin Jazz: I-IV-V-IV, with a montuno feel.",</p>
+<p class="p1">                "Neo-Soul: Imaj7-IVmaj7, with a laid back drum groove and a bridge using iii-vi-ii-V.",</p>
+<p class="p1">                "Space Funk on I-IV, bridge uses a V7alt or V7#9 to I.",</p>
+<p class="p1">                "Floating Ballad on I-IV, bridge ii-V or a deceptive cadence.",</p>
+<p class="p1">                "Happy Pop Groove on I-V-vi-IV."</p>
+<p class="p1">            ];</p>
+<p class="p2"><br></p>
+<p class="p1">            const minorKeyFeels = [</p>
+<p class="p1">                "Funky i-iv vamp, bridge in bIII Major or a V7alt to i.",</p>
+<p class="p1">                "Grooving i-v vamp (minor v or dominant V), bridge to bVI Major.",</p>
+<p class="p1">                "Soulful i-iv-v (minor v) progression, build intensity.",</p>
+<p class="p1">                "Smooth i-bVI-bIII-bVII progression (Aeolian feel).",</p>
+<p class="p1">                "Driving i-bVII-bVI-V rock/blues progression.",</p>
+<p class="p1">                "Bluesy i-iv groove, bridge uses V7#9 to i.",</p>
+<p class="p1">                "Jazz-Funk i-iv, bridge could be a ii°-V7alt-i or a simple V7 to i.",</p>
+<p class="p1">                "Reggae One-Drop on i-iv, bridge could hit V7 (dominant of i) briefly.",</p>
+<p class="p1">                "Afrobeat on i (hypnotic, polyrhythmic), bridge to V7#9 or bVII.",</p>
+<p class="p1">                "Dark &amp; Stormy i-bVI, bridge to a climactic V7.",</p>
+<p class="p1">                "Modal minor vamp (e.g., Dorian i-IV or Aeolian i-bVI), bridge to bIII.",</p>
+<p class="p1">                "Latin Jazz (minor): i-iv-V7-i, with clave feel."</p>
+<p class="p1">            ];</p>
+<p class="p2"><br></p>
+<p class="p1">            const vibeAdjectives = [</p>
+<p class="p1">                "Spicy", "Velvety", "Angular", "Floating", "Gritty", "Sparkling", "Mysterious",</p>
+<p class="p1">                "Playful", "Aggressive", "Soothing", "Chaotic", "Minimalist", "Lush",</p>
+<p class="p1">                "Urgent", "Lazy", "Nostalgic", "Futuristic", "Ancient", "Fragile", "Bold",</p>
+<p class="p1">                "Slick", "Earthy", "Cosmic", "Dreamy", "Witty", "Melancholy", "Joyful",</p>
+<p class="p1">                "Suspenseful", "Raw", "Polished", "Introspective", "Explosive"</p>
+<p class="p1">            ];</p>
+<p class="p2"><br></p>
+<p class="p1">            const keyboardSounds = [</p>
+<p class="p1">                "Synth Lead", "Organ B3", "Rhodes EP", "Acoustic Piano", "Clavinet",</p>
+<p class="p1">                "Synth Pad", "Wurli EP", "Mellotron Strings", "Synth Bass (Keys)", "Farfisa Organ"</p>
+<p class="p1">            ];</p>
+<p class="p2"><br></p>
+<p class="p1">            const players = ["Keys", "Bass", "Drums"];</p>
+<p class="p2"><br></p>
+<p class="p1">            const keyElement = document.getElementById('jamKey');</p>
+<p class="p1">            const feelElement = document.getElementById('jamFeel');</p>
+<p class="p1">            const adjectiveElement = document.getElementById('jamAdjective');</p>
+<p class="p1">            const keyboardSoundElement = document.getElementById('keyboardSound');</p>
+<p class="p1">            const starterElement = document.getElementById('jamStarter').querySelector('span:first-child');</p>
+<p class="p1">            const spinnerIcon = document.getElementById('spinnerIcon');</p>
+<p class="p1">            const generateButton = document.getElementById('generateButton');</p>
+<p class="p2"><br></p>
+<p class="p1">            function getRandomElement(arr) {</p>
+<p class="p1">                if (!arr || arr.length === 0) return "N/A";</p>
+<p class="p1">                return arr[Math.floor(Math.random() * arr.length)];</p>
+<p class="p1">            }</p>
+<p class="p2"><br></p>
+<p class="p1">            function generateJamSpark() {</p>
+<p class="p1">                generateButton.disabled = true;</p>
+<p class="p1">                generateButton.textContent = 'Generating...';</p>
+<p class="p1">                starterElement.textContent = '-';</p>
+<p class="p1">                spinnerIcon.classList.remove('hidden');</p>
+<p class="p2"><br></p>
+<p class="p1">                setTimeout(() =&gt; {</p>
+<p class="p1">                    const selectedKey = getRandomElement(musicalKeys);</p>
+<p class="p1">                    keyElement.textContent = selectedKey;</p>
+<p class="p2"><br></p>
+<p class="p1">                    let appropriateFeels;</p>
+<p class="p1">                    if (selectedKey.toLowerCase().includes("major")) {</p>
+<p class="p1">                        appropriateFeels = majorKeyFeels;</p>
+<p class="p1">                    } else if (selectedKey.toLowerCase().includes("minor")) {</p>
+<p class="p1">                        appropriateFeels = minorKeyFeels;</p>
+<p class="p1">                    } else { // Fallback if key type isn't easily determined (shouldn't happen with current list)</p>
+<p class="p1">                        appropriateFeels = [...majorKeyFeels, ...minorKeyFeels];</p>
+<p class="p1">                    }</p>
+<p class="p1">                    feelElement.textContent = getRandomElement(appropriateFeels);</p>
+<p class="p1">                    </p>
+<p class="p1">                    adjectiveElement.textContent = getRandomElement(vibeAdjectives);</p>
+<p class="p1">                    keyboardSoundElement.textContent = getRandomElement(keyboardSounds);</p>
+<p class="p1">                    starterElement.textContent = getRandomElement(players);</p>
+<p class="p2"><br></p>
+<p class="p1">                    spinnerIcon.classList.add('hidden');</p>
+<p class="p1">                    generateButton.disabled = false;</p>
+<p class="p1">                    generateButton.innerHTML = '✨ Spark New Jam!';</p>
+<p class="p1">                }, 700);</p>
+<p class="p1">            }</p>
+<p class="p2"><br></p>
+<p class="p1">            generateButton.addEventListener('click', generateJamSpark);</p>
+<p class="p1">            // Optional: generateJamSpark(); // To run on page load</p>
+<p class="p1">        });</p>
+<p class="p1">    &lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+</body>
+</html>
