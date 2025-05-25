@@ -1,227 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Improv Jam Spark Generator</title>
-  <meta name="description" content="Spark ideas during a jam session: musical key, feel, vibes, keyboard choice, and more!">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #1a202c; /* Tailwind gray-900 */
-      color: #e2e8f0; /* Tailwind coolGray-200 */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 1rem;
-      text-align: center;
-    }
-    .card {
-      background-color: #2d3748; /* Tailwind gray-800 */
-      padding: 1.5rem 2rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      margin-bottom: 1rem;
-      width: 100%;
-      max-width: 320px;
-    }
-    .card h2 {
-      color: #63b3ed; /* Tailwind blue-400 */
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .card p {
-      color: #cbd5e0; /* Tailwind coolGray-300 */
-      font-size: 1.25rem;
-      font-weight: 700;
-      min-height: 4.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1.4;
-    }
-    .button {
-      background-color: #4299e1; /* Tailwind blue-500 */
-      color: white;
-      font-weight: 600;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
-      transition: background-color 0.2s ease-in-out;
-      cursor: pointer;
-      border: none;
-      font-size: 1.125rem;
-    }
-    .button:hover {
-      background-color: #3182ce; /* Tailwind blue-600 */
-    }
-    .button:active {
-      transform: scale(0.98);
-    }
-    .spinner {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(255,255,255,.3);
-      border-radius: 50%;
-      border-top-color: #fff;
-      animation: spin 1s ease-in-out infinite;
-      margin-left: 8px;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improv Jam Spark Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Tailwind gray-900 */
+            color: #e2e8f0; /* Tailwind coolGray-200 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+            text-align: center;
+        }
+        .card {
+            background-color: #2d3748; /* Tailwind gray-800 */
+            padding: 1.5rem 2rem; /* p-6 md:p-8 */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1rem; /* mb-4 */
+            width: 100%;
+            max-width: 320px;
+        }
+        .card h2 {
+            color: #63b3ed; /* Tailwind blue-400 */
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
+        .card p {
+            color: #cbd5e0; /* Tailwind coolGray-300 */
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700; /* font-bold */
+            min-height: 4.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
+        }
+        .button {
+            background-color: #4299e1; /* Tailwind blue-500 */
+            color: white;
+            font-weight: 600; /* font-semibold */
+            padding: 0.75rem 1.5rem; /* py-3 px-6 */
+            border-radius: 0.5rem; /* rounded-lg */
+            transition: background-color 0.2s ease-in-out;
+            cursor: pointer;
+            border: none;
+            font-size: 1.125rem; /* text-lg */
+        }
+        .button:hover {
+            background-color: #3182ce; /* Tailwind blue-600 */
+        }
+        .button:active {
+            transform: scale(0.98);
+        }
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-  <div class="w-full max-w-5xl mx-auto">
-    <header class="mb-8">
-      <h1 class="text-4xl md:text-5xl font-bold text-blue-400">Improv Jam Spark Generator</h1>
-      <p class="text-lg text-gray-400 mt-2">Get random ideas to kickstart your jam session!</p>
-    </header>
+    <div class="w-full max-w-6xl mx-auto"> {/* Adjusted max-width for 6 cards in 2 rows */}
+        <header class="mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-400">Improv Jam Spark Generator</h1>
+            <p class="text-lg text-gray-400 mt-2">Get random ideas to kickstart your jam session!</p>
+        </header>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-8">
-      <div class="card">
-        <h2>Musical Key</h2>
-        <p id="jamKey">-</p>
-      </div>
-      <div class="card">
-        <h2>Feel / Groove</h2>
-        <p id="jamFeel">-</p>
-      </div>
-      <div class="card">
-        <h2>Vibe Adjective</h2>
-        <p id="jamAdjective">-</p>
-      </div>
-      <div class="card">
-        <h2>Keyboard Sound</h2>
-        <p id="keyboardSound">-</p>
-      </div>
-      <div class="card">
-        <h2>Who Starts?</h2>
-        <p id="jamStarter">
-          <span>-</span>
-          <span id="spinnerIcon" class="spinner hidden" aria-label="Loading"></span>
-        </p>
-      </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8"> {/* Grid for 6 items */}
+            <div class="card">
+                <h2>Musical Key</h2>
+                <p id="jamKey">-</p>
+            </div>
+            <div class="card">
+                <h2>Feel / Groove</h2>
+                <p id="jamFeel">-</p>
+            </div>
+            <div class="card">
+                <h2>Vibe Adjective</h2>
+                <p id="jamAdjective">-</p>
+            </div>
+            <div class="card">
+                <h2>Keyboard Sound</h2>
+                <p id="keyboardSound">-</p>
+            </div>
+            <div class="card"> {/* New Tempo Card */}
+                <h2>Tempo Feel</h2>
+                <p id="jamTempo">-</p>
+            </div>
+            <div class="card">
+                <h2>Who Starts?</h2>
+                <p id="jamStarter">
+                    <span>-</span>
+                    <span id="spinnerIcon" class="spinner hidden"></span>
+                </p>
+            </div>
+        </div>
+
+        <button id="generateButton" class="button">
+            ✨ Spark New Jam!
+        </button>
+
+        <footer class="mt-12 text-gray-500 text-sm">
+            <p>Tip: Interpret Roman numerals in "Feel/Groove" based on the selected "Musical Key". Let the "Tempo Feel" guide your pulse. Have fun grooving!</p>
+        </footer>
     </div>
 
-    <button id="generateButton" class="button" aria-live="polite">
-      ✨ Spark New Jam!
-    </button>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const musicalKeys = [
+                "C Major", "F Major", "Bb Major", "Eb Major", "Ab Major", "Db Major", "Gb Major",
+                "G Major", "D Major", "A Major", "E Major", "B Major",
+                "A Minor", "D Minor", "G Minor", "C Minor", "F Minor", "Bb Minor", "Eb Minor",
+                "E Minor", "B Minor", "F# Minor", "C# Minor", "G# Minor"
+            ];
 
-    <footer class="mt-12 text-gray-500 text-sm">
-      <p>Tip: Interpret Roman numerals in "Feel/Groove" based on the selected "Musical Key". Have fun grooving!</p>
-    </footer>
-  </div>
+            const majorKeyFeels = [
+                "Bright I-IV vamp, bridge to vi or a ii-V progression.",
+                "Grooving I-V vamp, bridge in a related minor (e.g., vi or iii).",
+                "Soulful I-IV-V progression, focus on melodic development.",
+                "Smooth Imaj7-ii7 vamp, bridge could modulate up a whole step.",
+                "Driving I-bVII-IV-I rock/pop progression.",
+                "Slow Jam I-IV, bridge features a V7#9 resolving to I.",
+                "Uptempo Swing, solos over ii-V-I changes and I-vi-ii-V turnarounds.",
+                "Latin Jazz: I-IV-V-IV, with a montuno feel.",
+                "Neo-Soul: Imaj7-IVmaj7, with a laid back drum groove and a bridge using iii-vi-ii-V.",
+                "Space Funk on I-IV, bridge uses a V7alt or V7#9 to I.",
+                "Floating Ballad on I-IV, bridge ii-V or a deceptive cadence.",
+                "Happy Pop Groove on I-V-vi-IV."
+            ];
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const musicalKeys = [
-        "C Major", "F Major", "Bb Major", "Eb Major", "Ab Major", "Db Major", "Gb Major",
-        "G Major", "D Major", "A Major", "E Major", "B Major",
-        "A Minor", "D Minor", "G Minor", "C Minor", "F Minor", "Bb Minor", "Eb Minor",
-        "E Minor", "B Minor", "F# Minor", "C# Minor", "G# Minor"
-      ];
+            const minorKeyFeels = [
+                "Funky i-iv vamp, bridge in bIII Major or a V7alt to i.",
+                "Grooving i-v vamp (minor v or dominant V), bridge to bVI Major.",
+                "Soulful i-iv-v (minor v) progression, build intensity.",
+                "Smooth i-bVI-bIII-bVII progression (Aeolian feel).",
+                "Driving i-bVII-bVI-V rock/blues progression.",
+                "Bluesy i-iv groove, bridge uses V7#9 to i.",
+                "Jazz-Funk i-iv, bridge could be a ii°-V7alt-i or a simple V7 to i.",
+                "Reggae One-Drop on i-iv, bridge could hit V7 (dominant of i) briefly.",
+                "Afrobeat on i (hypnotic, polyrhythmic), bridge to V7#9 or bVII.",
+                "Dark & Stormy i-bVI, bridge to a climactic V7.",
+                "Modal minor vamp (e.g., Dorian i-IV or Aeolian i-bVI), bridge to bIII.",
+                "Latin Jazz (minor): i-iv-V7-i, with clave feel."
+            ];
 
-      const majorKeyFeels = [
-        "Bright I-IV vamp, bridge to vi or a ii-V progression.",
-        "Grooving I-V vamp, bridge in a related minor (e.g., vi or iii).",
-        "Soulful I-IV-V progression, focus on melodic development.",
-        "Smooth Imaj7-ii7 vamp, bridge could modulate up a whole step.",
-        "Driving I-bVII-IV-I rock/pop progression.",
-        "Slow Jam I-IV, bridge features a V7#9 resolving to I.",
-        "Uptempo Swing, solos over ii-V-I changes and I-vi-ii-V turnarounds.",
-        "Latin Jazz: I-IV-V-IV, with a montuno feel.",
-        "Neo-Soul: Imaj7-IVmaj7, with a laid back drum groove and a bridge using iii-vi-ii-V.",
-        "Space Funk on I-IV, bridge uses a V7alt or V7#9 to I.",
-        "Floating Ballad on I-IV, bridge ii-V or a deceptive cadence.",
-        "Happy Pop Groove on I-V-vi-IV."
-      ];
+            const vibeAdjectives = [
+                "Spicy", "Velvety", "Angular", "Floating", "Gritty", "Sparkling", "Mysterious",
+                "Playful", "Aggressive", "Soothing", "Chaotic", "Minimalist", "Lush",
+                "Urgent", "Lazy", "Nostalgic", "Futuristic", "Ancient", "Fragile", "Bold",
+                "Slick", "Earthy", "Cosmic", "Dreamy", "Witty", "Melancholy", "Joyful",
+                "Suspenseful", "Raw", "Polished", "Introspective", "Explosive"
+            ];
 
-      const minorKeyFeels = [
-        "Funky i-iv vamp, bridge in bIII Major or a V7alt to i.",
-        "Grooving i-v vamp (minor v or dominant V), bridge to bVI Major.",
-        "Soulful i-iv-v (minor v) progression, build intensity.",
-        "Smooth i-bVI-bIII-bVII progression (Aeolian feel).",
-        "Driving i-bVII-bVI-V rock/blues progression.",
-        "Bluesy i-iv groove, bridge uses V7#9 to i.",
-        "Jazz-Funk i-iv, bridge could be a ii°-V7alt-i or a simple V7 to i.",
-        "Reggae One-Drop on i-iv, bridge could hit V7 (dominant of i) briefly.",
-        "Afrobeat on i (hypnotic, polyrhythmic), bridge to V7#9 or bVII.",
-        "Dark & Stormy i-bVI, bridge to a climactic V7.",
-        "Modal minor vamp (e.g., Dorian i-IV or Aeolian i-bVI), bridge to bIII.",
-        "Latin Jazz (minor): i-iv-V7-i, with clave feel."
-      ];
+            const keyboardSounds = [
+                "Synth Lead", "Organ B3", "Rhodes EP", "Acoustic Piano", "Clavinet",
+                "Synth Pad", "Wurli EP", "Mellotron Strings", "Synth Bass (Keys)", "Farfisa Organ"
+            ];
 
-      const vibeAdjectives = [
-        "Spicy", "Velvety", "Angular", "Floating", "Gritty", "Sparkling", "Mysterious",
-        "Playful", "Aggressive", "Soothing", "Chaotic", "Minimalist", "Lush",
-        "Urgent", "Lazy", "Nostalgic", "Futuristic", "Ancient", "Fragile", "Bold",
-        "Slick", "Earthy", "Cosmic", "Dreamy", "Witty", "Melancholy", "Joyful",
-        "Suspenseful", "Raw", "Polished", "Introspective", "Explosive"
-      ];
+            const tempoDescriptors = [ // New array for tempo
+                "Glacial Pace", "Slow Drag", "Lazy River", "Ocean Swell", "Steady Walk",
+                "Heartbeat Pulse", "Medium Groove", "Brisk Jog", "Urgent Rush",
+                "Fast & Furious", "Machine Gun Fire", "Like Waves Crashing", "Hummingbird Wings",
+                "Floating Clouds", "Relentless Drive", "Ballad Slow", "Uptempo Burner",
+                "Lumbering Giant", "Tiptoe Quiet", "Galloping Horse"
+            ];
 
-      const keyboardSounds = [
-        "Synth Lead", "Organ B3", "Rhodes EP", "Acoustic Piano", "Clavinet",
-        "Synth Pad", "Wurli EP", "Mellotron Strings", "Synth Bass (Keys)", "Farfisa Organ"
-      ];
+            const players = ["Keys", "Bass", "Drums"];
 
-      const players = ["Keys", "Bass", "Drums"];
+            const keyElement = document.getElementById('jamKey');
+            const feelElement = document.getElementById('jamFeel');
+            const adjectiveElement = document.getElementById('jamAdjective');
+            const keyboardSoundElement = document.getElementById('keyboardSound');
+            const tempoElement = document.getElementById('jamTempo'); // New tempo element
+            const starterElement = document.getElementById('jamStarter').querySelector('span:first-child');
+            const spinnerIcon = document.getElementById('spinnerIcon');
+            const generateButton = document.getElementById('generateButton');
 
-      const keyElement = document.getElementById('jamKey');
-      const feelElement = document.getElementById('jamFeel');
-      const adjectiveElement = document.getElementById('jamAdjective');
-      const keyboardSoundElement = document.getElementById('keyboardSound');
-      const starterElement = document.getElementById('jamStarter').querySelector('span:first-child');
-      const spinnerIcon = document.getElementById('spinnerIcon');
-      const generateButton = document.getElementById('generateButton');
+            function getRandomElement(arr) {
+                if (!arr || arr.length === 0) return "N/A";
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
 
-      function getRandomElement(arr) {
-        if (!arr || arr.length === 0) return "N/A";
-        return arr[Math.floor(Math.random() * arr.length)];
-      }
+            function generateJamSpark() {
+                generateButton.disabled = true;
+                generateButton.textContent = 'Generating...';
+                starterElement.textContent = '-';
+                spinnerIcon.classList.remove('hidden');
 
-      function generateJamSpark() {
-        generateButton.disabled = true;
-        generateButton.textContent = 'Generating...';
-        starterElement.textContent = '-';
-        spinnerIcon.classList.remove('hidden');
+                setTimeout(() => {
+                    const selectedKey = getRandomElement(musicalKeys);
+                    keyElement.textContent = selectedKey;
 
-        setTimeout(() => {
-          const selectedKey = getRandomElement(musicalKeys);
-          keyElement.textContent = selectedKey;
+                    let appropriateFeels;
+                    if (selectedKey.toLowerCase().includes("major")) {
+                        appropriateFeels = majorKeyFeels;
+                    } else if (selectedKey.toLowerCase().includes("minor")) {
+                        appropriateFeels = minorKeyFeels;
+                    } else {
+                        appropriateFeels = [...majorKeyFeels, ...minorKeyFeels];
+                    }
+                    feelElement.textContent = getRandomElement(appropriateFeels);
+                    
+                    adjectiveElement.textContent = getRandomElement(vibeAdjectives);
+                    keyboardSoundElement.textContent = getRandomElement(keyboardSounds);
+                    tempoElement.textContent = getRandomElement(tempoDescriptors); // Set tempo descriptor
+                    starterElement.textContent = getRandomElement(players);
 
-          let appropriateFeels;
-          if (selectedKey.toLowerCase().includes("major")) {
-            appropriateFeels = majorKeyFeels;
-          } else if (selectedKey.toLowerCase().includes("minor")) {
-            appropriateFeels = minorKeyFeels;
-          } else {
-            appropriateFeels = [...majorKeyFeels, ...minorKeyFeels];
-          }
-          feelElement.textContent = getRandomElement(appropriateFeels);
+                    spinnerIcon.classList.add('hidden');
+                    generateButton.disabled = false;
+                    generateButton.innerHTML = '✨ Spark New Jam!';
+                }, 700);
+            }
 
-          adjectiveElement.textContent = getRandomElement(vibeAdjectives);
-          keyboardSoundElement.textContent = getRandomElement(keyboardSounds);
-          starterElement.textContent = getRandomElement(players);
-
-          spinnerIcon.classList.add('hidden');
-          generateButton.disabled = false;
-          generateButton.innerHTML = '✨ Spark New Jam!';
-        }, 700);
-      }
-
-      generateButton.addEventListener('click', generateJamSpark);
-      // Optionally: generateJamSpark(); // Uncomment to auto-generate on page load
-    });
-  </script>
+            generateButton.addEventListener('click', generateJamSpark);
+            // Optional: generateJamSpark(); // To run on page load
+        });
+    </script>
 </body>
 </html>
