@@ -1,6 +1,4 @@
-Okay, here's a draft for a README.md file for your "Improv Jam Spark Generator." You can save this as README.md in the root of your GitHub repository.
 
-Markdown
 
 # Improv Jam Spark Generator
 
