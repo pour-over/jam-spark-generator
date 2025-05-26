@@ -107,7 +107,8 @@
                 <h2>Tempo Feel</h2>
                 <p id="jamTempo">-</p>
             </div>
-            <div class="card"> {/* New "Don't Use..." Card */}
+            <div class="card">
+                <!-- New "Don't Use..." Card -->
                 <h2>Don't Use...</h2>
                 <p id="jamDontUse">-</p>
             </div>
@@ -125,7 +126,7 @@
         </button>
 
         <footer class="mt-12 text-sm">
-            <p class="text-gray-300">Tip: Interpret Roman numerals in "Feel/Groove" based on the selected "Musical Key". Let the "Tempo Feel" guide your pulse. Try to avoid the "Don't Use..." suggestion. Have fun grooving!</p>
+            <p class="text-gray-300">Tip: Interpret Roman numerals in "Feel/Groove" based on the selected "Musical Key". Let the "Tempo Feel" guide your pulse. Try to avoid the "Don't Use..." suggestion for extra challenge!</p>
         </footer>
     </div>
 
@@ -189,7 +190,7 @@
                 "Lumbering Giant", "Tiptoe Quiet", "Galloping Horse"
             ];
 
-            const dontUsePhrases = [ // New array for "Don't Use..."
+            const dontUsePhrases = [
                 "The Root Note", "Beat One", "Quarter Notes", "Your Right Hand", "Your Eyes",
                 "The Fifth", "The Tonic Chord", "A Scale", "A Lick You Know", "The Blues Scale",
                 "Syncopation", "The Bridge", "Repetition", "Silence", "The Downbeat",
@@ -204,7 +205,7 @@
             const adjectiveElement = document.getElementById('jamAdjective');
             const keyboardSoundElement = document.getElementById('keyboardSound');
             const tempoElement = document.getElementById('jamTempo'); 
-            const dontUseElement = document.getElementById('jamDontUse'); // New "Don't Use..." element
+            const dontUseElement = document.getElementById('jamDontUse');
             const starterElement = document.getElementById('jamStarter').querySelector('span:first-child');
             const spinnerIcon = document.getElementById('spinnerIcon');
             const generateButton = document.getElementById('generateButton');
@@ -237,7 +238,7 @@
                     adjectiveElement.textContent = getRandomElement(vibeAdjectives);
                     keyboardSoundElement.textContent = getRandomElement(keyboardSounds);
                     tempoElement.textContent = getRandomElement(tempoDescriptors); 
-                    dontUseElement.textContent = getRandomElement(dontUsePhrases); // Set "Don't Use..." phrase
+                    dontUseElement.textContent = getRandomElement(dontUsePhrases);
                     starterElement.textContent = getRandomElement(players);
 
                     spinnerIcon.classList.add('hidden');
@@ -250,4 +251,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
