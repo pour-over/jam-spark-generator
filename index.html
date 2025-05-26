@@ -5,11 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Improv Jam Spark Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a202c;
+            background-color: #1a202c; /* Tailwind gray-900 */
+            color: #FFFFFF; /* Bright White */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+            text-align: center;
+        }
+        .card {
+            background-color: #2d3748; /* Tailwind gray-800 */
+            padding: 1.5rem 2rem; 
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1rem; 
+            width: 100%;
+            max-width: 320px; /* Max width for cards */
+        }
+        .card h2 {
+            color: #63b3ed; /* Tailwind blue-400 */
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+            margin-bottom: 0.5rem; 
+        }
+        .card p {
+            color: #FFFFFF; /* Bright White */
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700; /* font-bold */
+            min-height: 4.5rem; /* Ensure space for text */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4; 
+        }
+        .button {
+            background-color: #4299e1; /* Tailwind blue-500 */
+            color: white; 
+            font-weight: 600; /* font-semibold */
+            padding: 0.75rem 1.5rem; 
+            border-radius: 0.5rem; /* rounded-lg */
+            transition: background-color 0.2s ease-in-out;
+            cursor: pointer;
+            border: none;
+            font-size: 1.125rem; /* text-lg */
+        }
+        .button:hover {
+            background-color: #3182ce; /* Tailwind blue-600 */
+        }
+        .button:active {
+            transform: scale(0.98);
         }
         .spinner {
             display: inline-block;
@@ -17,64 +67,65 @@
             height: 20px;
             border: 3px solid rgba(255,255,255,.3);
             border-radius: 50%;
-            border-top-color: #fff;
+            border-top-color: #fff; 
             animation: spin 1s ease-in-out infinite;
             margin-left: 8px;
         }
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        .hidden { display: none; }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-900 text-coolGray-100 text-center">
-
-    <div class="w-full max-w-6xl mx-auto">
+<body>
+    <div class="w-full max-w-6xl mx-auto"> 
         <header class="mb-8">
-            <h1 class="text-4xl md:text-5xl font-bold text-blue-400 drop-shadow-lg">Improv Jam Spark Generator</h1>
-            <p class="text-lg text-gray-400 mt-2">Get random ideas to kickstart your jam session!</p>
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-400">Improv Jam Spark Generator</h1>
+            <p class="text-lg text-gray-100 mt-2">Get random ideas to kickstart your jam session!</p>
         </header>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center">
-                <h2 class="text-blue-400 text-lg font-semibold mb-2">Musical Key</h2>
-                <p id="jamKey" class="text-xl font-bold text-coolGray-300 min-h-[4.5rem] flex items-center justify-center"></p>
+            <div class="card">
+                <h2>Musical Key</h2>
+                <p id="jamKey">-</p>
             </div>
-            <div class="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center">
-                <h2 class="text-blue-400 text-lg font-semibold mb-2">Feel / Groove</h2>
-                <p id="jamFeel" class="text-xl font-bold text-coolGray-300 min-h-[4.5rem] flex items-center justify-center"></p>
+            <div class="card">
+                <h2>Feel / Groove</h2>
+                <p id="jamFeel">-</p>
             </div>
-            <div class="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center">
-                <h2 class="text-blue-400 text-lg font-semibold mb-2">Vibe Adjective</h2>
-                <p id="jamAdjective" class="text-xl font-bold text-coolGray-300 min-h-[4.5rem] flex items-center justify-center"></p>
+            <div class="card">
+                <h2>Vibe Adjective</h2>
+                <p id="jamAdjective">-</p>
             </div>
-            <div class="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center">
-                <h2 class="text-blue-400 text-lg font-semibold mb-2">Keyboard Sound</h2>
-                <p id="keyboardSound" class="text-xl font-bold text-coolGray-300 min-h-[4.5rem] flex items-center justify-center"></p>
+            <div class="card">
+                <h2>Keyboard Sound</h2>
+                <p id="keyboardSound">-</p>
             </div>
-            <div class="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center">
-                <h2 class="text-blue-400 text-lg font-semibold mb-2">Tempo Feel</h2>
-                <p id="jamTempo" class="text-xl font-bold text-coolGray-300 min-h-[4.5rem] flex items-center justify-center"></p>
+            <div class="card"> 
+                <h2>Tempo Feel</h2>
+                <p id="jamTempo">-</p>
             </div>
-            <div class="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center">
-                <h2 class="text-blue-400 text-lg font-semibold mb-2">Who Starts?</h2>
-                <p id="jamStarter" class="text-xl font-bold text-coolGray-300 min-h-[4.5rem] flex items-center justify-center">
+            <div class="card"> {/* New "Don't Use..." Card */}
+                <h2>Don't Use...</h2>
+                <p id="jamDontUse">-</p>
+            </div>
+            <div class="card">
+                <h2>Who Starts?</h2>
+                <p id="jamStarter">
                     <span>-</span>
                     <span id="spinnerIcon" class="spinner hidden"></span>
                 </p>
             </div>
         </div>
 
-        <button id="generateButton"
-            class="bg-blue-500 hover:bg-blue-600 active:scale-95 text-white font-semibold py-3 px-6 rounded-lg text-lg shadow transition-all duration-200 mb-6 flex items-center mx-auto">
+        <button id="generateButton" class="button">
             ✨ Spark New Jam!
         </button>
 
-        <footer class="mt-12 text-gray-500 text-sm">
-            <p>
-                Tip: Interpret Roman numerals in "Feel/Groove" based on the selected "Musical Key".<br>
-                Let the "Tempo Feel" guide your pulse. Have fun grooving!
-            </p>
+        <footer class="mt-12 text-sm">
+            <p class="text-gray-300">Tip: Interpret Roman numerals in "Feel/Groove" based on the selected "Musical Key". Let the "Tempo Feel" guide your pulse. Try to avoid the "Don't Use..." suggestion. Have fun grooving!</p>
         </footer>
     </div>
 
@@ -86,6 +137,7 @@
                 "A Minor", "D Minor", "G Minor", "C Minor", "F Minor", "Bb Minor", "Eb Minor",
                 "E Minor", "B Minor", "F# Minor", "C# Minor", "G# Minor"
             ];
+
             const majorKeyFeels = [
                 "Bright I-IV vamp, bridge to vi or a ii-V progression.",
                 "Grooving I-V vamp, bridge in a related minor (e.g., vi or iii).",
@@ -100,6 +152,7 @@
                 "Floating Ballad on I-IV, bridge ii-V or a deceptive cadence.",
                 "Happy Pop Groove on I-V-vi-IV."
             ];
+
             const minorKeyFeels = [
                 "Funky i-iv vamp, bridge in bIII Major or a V7alt to i.",
                 "Grooving i-v vamp (minor v or dominant V), bridge to bVI Major.",
@@ -114,6 +167,7 @@
                 "Modal minor vamp (e.g., Dorian i-IV or Aeolian i-bVI), bridge to bIII.",
                 "Latin Jazz (minor): i-iv-V7-i, with clave feel."
             ];
+
             const vibeAdjectives = [
                 "Spicy", "Velvety", "Angular", "Floating", "Gritty", "Sparkling", "Mysterious",
                 "Playful", "Aggressive", "Soothing", "Chaotic", "Minimalist", "Lush",
@@ -121,24 +175,36 @@
                 "Slick", "Earthy", "Cosmic", "Dreamy", "Witty", "Melancholy", "Joyful",
                 "Suspenseful", "Raw", "Polished", "Introspective", "Explosive"
             ];
+
             const keyboardSounds = [
                 "Synth Lead", "Organ B3", "Rhodes EP", "Acoustic Piano", "Clavinet",
                 "Synth Pad", "Wurli EP", "Mellotron Strings", "Synth Bass (Keys)", "Farfisa Organ"
             ];
-            const tempoDescriptors = [
+
+            const tempoDescriptors = [ 
                 "Glacial Pace", "Slow Drag", "Lazy River", "Ocean Swell", "Steady Walk",
                 "Heartbeat Pulse", "Medium Groove", "Brisk Jog", "Urgent Rush",
                 "Fast & Furious", "Machine Gun Fire", "Like Waves Crashing", "Hummingbird Wings",
                 "Floating Clouds", "Relentless Drive", "Ballad Slow", "Uptempo Burner",
                 "Lumbering Giant", "Tiptoe Quiet", "Galloping Horse"
             ];
+
+            const dontUsePhrases = [ // New array for "Don't Use..."
+                "The Root Note", "Beat One", "Quarter Notes", "Your Right Hand", "Your Eyes",
+                "The Fifth", "The Tonic Chord", "A Scale", "A Lick You Know", "The Blues Scale",
+                "Syncopation", "The Bridge", "Repetition", "Silence", "The Downbeat",
+                "Your Usual Sound", "The Main Melody", "Any Pedal", "Looking At Others", "The Kick Drum"
+            ];
+
             const players = ["Keys", "Bass", "Drums"];
 
+            // DOM Elements
             const keyElement = document.getElementById('jamKey');
             const feelElement = document.getElementById('jamFeel');
             const adjectiveElement = document.getElementById('jamAdjective');
             const keyboardSoundElement = document.getElementById('keyboardSound');
-            const tempoElement = document.getElementById('jamTempo');
+            const tempoElement = document.getElementById('jamTempo'); 
+            const dontUseElement = document.getElementById('jamDontUse'); // New "Don't Use..." element
             const starterElement = document.getElementById('jamStarter').querySelector('span:first-child');
             const spinnerIcon = document.getElementById('spinnerIcon');
             const generateButton = document.getElementById('generateButton');
@@ -150,22 +216,30 @@
 
             function generateJamSpark() {
                 generateButton.disabled = true;
-                generateButton.innerHTML = 'Generating... <span class="spinner"></span>';
+                generateButton.textContent = 'Generating...';
                 starterElement.textContent = '-';
                 spinnerIcon.classList.remove('hidden');
+
                 setTimeout(() => {
                     const selectedKey = getRandomElement(musicalKeys);
                     keyElement.textContent = selectedKey;
-                    let appropriateFeels = selectedKey.toLowerCase().includes("major")
-                        ? majorKeyFeels
-                        : selectedKey.toLowerCase().includes("minor")
-                        ? minorKeyFeels
-                        : [...majorKeyFeels, ...minorKeyFeels];
+
+                    let appropriateFeels;
+                    if (selectedKey.toLowerCase().includes("major")) {
+                        appropriateFeels = majorKeyFeels;
+                    } else if (selectedKey.toLowerCase().includes("minor")) {
+                        appropriateFeels = minorKeyFeels;
+                    } else {
+                        appropriateFeels = [...majorKeyFeels, ...minorKeyFeels];
+                    }
                     feelElement.textContent = getRandomElement(appropriateFeels);
+                    
                     adjectiveElement.textContent = getRandomElement(vibeAdjectives);
                     keyboardSoundElement.textContent = getRandomElement(keyboardSounds);
-                    tempoElement.textContent = getRandomElement(tempoDescriptors);
+                    tempoElement.textContent = getRandomElement(tempoDescriptors); 
+                    dontUseElement.textContent = getRandomElement(dontUsePhrases); // Set "Don't Use..." phrase
                     starterElement.textContent = getRandomElement(players);
+
                     spinnerIcon.classList.add('hidden');
                     generateButton.disabled = false;
                     generateButton.innerHTML = '✨ Spark New Jam!';
